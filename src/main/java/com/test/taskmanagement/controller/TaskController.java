@@ -2,10 +2,8 @@ package com.test.taskmanagement.controller;
 
 import com.test.taskmanagement.model.Task;
 import com.test.taskmanagement.service.TaskService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +25,20 @@ public class TaskController {
     @GetMapping("/{id}")
     public Task getTaskById(@PathVariable Long id){
         return taskService.getTaskById(id);
+    }
+
+    @PostMapping
+    public Task createTask(@RequestBody Task task){
+        return taskService.createTask(task);
+    }
+    @PutMapping("/{id}")
+    public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
+        return taskService.updateTask(id, task);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+        return ResponseEntity.noContent().build();
     }
 
 
