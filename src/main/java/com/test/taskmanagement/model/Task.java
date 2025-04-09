@@ -6,10 +6,8 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 public class Task {
